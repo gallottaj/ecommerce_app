@@ -1,4 +1,7 @@
 <?php
+
+include 'header.php';
+
 $attemptedRegisterFirstName = $_POST['FirstName'];
 $attemptedRegisterLastName = $_POST['LastName'];
 $attemptedRegisterUsername = $_POST['Username'];
@@ -21,6 +24,7 @@ switch ($_POST['Role']) {
 }
 
 $service = new UserBusinessService();
-echo 'hi';
+echo 'adding new user';
 $service->registerNewUser($attemptedRegisterFirstName, $attemptedRegisterLastName, $attemptedRegisterUsername, $attemptedRegisterPassword, $attemptedRegisterRole);
+
 ?>

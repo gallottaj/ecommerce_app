@@ -2,7 +2,6 @@
 
 class Database
 {
-
     private $dbservername = "localhost";
 
     private $dbusername = "root";
@@ -17,7 +16,8 @@ class Database
 
         if ($conn->connect_error) {
             echo "Connection failed " . $conn->connect_error . "<br>";
-        } else {
+        } 
+        else {
             return $conn;
         }
     }
