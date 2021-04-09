@@ -39,7 +39,7 @@ class UserDataService
             $db = new Database();
            
             
-            echo "<br>ADDING USER";
+            echo "<br>Adding new user:";
             echo "<br>FirstName: $firstName";
             echo "<br>LastName: $lastName";
             echo "<br>USERNAME: $username";
