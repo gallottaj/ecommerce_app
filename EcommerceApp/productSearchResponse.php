@@ -29,7 +29,7 @@
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      background-color: #4CAF50;
+      background-color: #2a49b8;
       color: white;
     }
   </style>
