@@ -49,10 +49,10 @@
 
     for ($i = 0; $i < count($products); $i++) {
       echo '<tr>';
-      echo '<td>' . $products[$i]['ID'] . '</td>';
-      echo '<td>' . $products[$i]['PRODUCT_NAME'] . '</td>';
-      echo '<td>' . $products[$i]['PRODUCT_DESCRIPTION'] . '</td>';
-      echo '<td>' . $products[$i]['PRICE'] . '</td>';
+      echo '<td>' . $products[$i]['product_id'] . '</td>';
+      echo '<td>' . $products[$i]['product_name'] . '</td>';
+      echo '<td>' . $products[$i]['product_description'] . '</td>';
+      echo '<td>' . $products[$i]['product_price'] . '</td>';
       echo '</tr>';
     }
 

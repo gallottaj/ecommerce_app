@@ -1,17 +1,18 @@
-<?php 
+<?php
+
 class ProductBusinessService
 {
-    
-    //returns all products
+
+    // returns an array ALL products
     function getAllProducts()
     {
-        //$dataService = new ProductDataService();
+        $dataService = new ProductDataService();
         return $dataService->getAllProducts();
     }
-    
+
     function searchByNameOrDescription($searchQueryString)
     {
-        //$dataService = new ProductDataService();
+        $dataService = new ProductDataService();
         return $dataService->searchByNameOrDescription($searchQueryString);
     }
 }

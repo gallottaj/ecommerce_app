@@ -1,14 +1,14 @@
 <?php 
 class ProductDataService
 {
-    
+ //return an array of all products   
     function getAllProducts()
     {
-        $database = new Database();
+        $db = new Database();
         
-        $conn = $database->getConnection();
+        $connection = $db->getConnection();
         
-        $stmt = $conn->prepare("SELECT * FROM EcommerceApp.products");
+        $stmt = $connection->prepare("SELECT * FROM products");
         
         $stmt->execute();
         
@@ -32,24 +32,15 @@ class ProductDataService
         }
     }
     
-    // function findProductsByName($searchName){
-    //   $database = new Database();
-    
-    //   $conn = $database->getConnection();
-    
-    //   $stmt = $conn->prepare("SELECT * FROM products WHERE product_name LIKE")
-    // }
-    
-    
     function searchByNameOrDescription($searchQueryString)
     {
-        $database = new Database();
+        $db = new Database();
         
-        echo  'query string: ' . $searchQueryString;
+        $connection = $db->getConnection();
         
-        $conn = $database->getConnection();
+        echo  'search: ' . $searchQueryString;
         
-        $stmt = $conn->prepare("SELECT * FROM products WHERE product_name LIKE ? OR PRODUCT_DESCRIPTION LIKE ?");
+        $stmt = $connection->prepare("SELECT * FROM products WHERE product_name LIKE ? OR product_description LIKE ?");
         
         $like_productName = "%" . $searchQueryString . "%";
         $like_productDesc = "%" . $searchQueryString . "%";
@@ -60,7 +51,7 @@ class ProductDataService
         $result = $stmt->get_result();
         
         if (!$result) {
-            echo "error in SQL statement";
+            echo "assume there is an errir in SQL statement";
             exit;
         }
         
@@ -77,5 +68,6 @@ class ProductDataService
         }
     }
 }
+
 
 ?>

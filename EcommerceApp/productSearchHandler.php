@@ -19,7 +19,6 @@ $products = $bs->searchByNameOrDescription($searchPhrase);
 <?php
 
 if ($products) {
-  // we got some results
   include 'productSearchResponse.php';
 } else {
   echo 'no results';
