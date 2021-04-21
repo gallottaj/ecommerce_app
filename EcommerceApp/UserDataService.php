@@ -21,7 +21,7 @@ class UserDataService
 
         if (! $result) {
             echo "assume the SQL statement has an error";
-            exit;
+            exit();
         }
 
         if ($result->num_rows == 0) {
@@ -30,27 +30,24 @@ class UserDataService
             return "I found " . $result->num_rows . " results! <br>";
         }
     }
-    
+
     function registerNewUser($firstName, $lastName, $username, $password, $role)
     {
-        
-        //if (!$this->findByFirstName($n)) {
-        
-            $db = new Database();
-           
-            
-            echo "<br>Adding new user:";
-            echo "<br>FirstName: $firstName";
-            echo "<br>LastName: $lastName";
-            echo "<br>USERNAME: $username";
-            echo "<br>PASSWORD: $password";
-            echo "<br>Role: $role";
-            
-            
-            $sql_query = "INSERT INTO users (first_name, last_name, username, password, role) VALUES ('$firstName', '$lastName', '$username', '$password', '$role')";
-            
-            $connection = $db->getConnection();
-            $result = $connection->query($sql_query);
-        }
+
+        // if (!$this->findByFirstName($n)) {
+        $db = new Database();
+
+        echo "<br>Adding new user:";
+        echo "<br>FirstName: $firstName";
+        echo "<br>LastName: $lastName";
+        echo "<br>USERNAME: $username";
+        echo "<br>PASSWORD: $password";
+        echo "<br>Role: $role";
+
+        $sql_query = "INSERT INTO users (first_name, last_name, username, password, role) VALUES ('$firstName', '$lastName', '$username', '$password', '$role')";
+
+        $connection = $db->getConnection();
+        $result = $connection->query($sql_query);
     }
+}
 ?>
