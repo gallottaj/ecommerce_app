@@ -4,35 +4,35 @@
 // joey gallotta
 include '../../../header.php';
 
-$productBusinessService = new ProductBusinessService();
-$userBusinessService = new UserBusinessService();
+// $productBusinessService = new ProductBusinessService();
+// $userBusinessService = new UserBusinessService();
 
-// checks if there are any items in cart
-if (isset($_SESSION['cart'])) {
-$c = $_SESSION['cart'];
-} else {
-?>
+// // checks if there are any items in cart
+// if (isset($_SESSION['cart'])) {
+// $c = $_SESSION['cart'];
+// } else {
+// ?>
 
 <!-- <p>Cart is Empty.</p> -->
 
-<?php
-exit();
+ <?php
+// exit();
 
-// verify the user is logged in using user id
-if (isset($_SESSION['userid'])) {
-    $userid = $_SESSION['userid'];
-} else {
-    echo 'Please log in or create an account. <br>';
-    exit();
-}
+// // verify the user is logged in using user id
+// if (isset($_SESSION['userid'])) {
+// $userid = $_SESSION['userid'];
+// } else {
+// echo 'Please log in or create an account. <br>';
+// exit();
+// }
 
-// verify the cart belongs to the user
-if ($c->getUserid() != $userid) {
-    echo 'Cart error.';
-    exit();
-}
+// // verify the cart belongs to the user
+// if ($c->getUserid() != $userid) {
+// echo 'Cart error.';
+// exit();
+// }
 
-?>
+// ?>
 
 
 
