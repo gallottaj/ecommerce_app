@@ -2,6 +2,7 @@
 
 // joey gallotta
 // cst-236
+
 class OrderDetails
 {
 
