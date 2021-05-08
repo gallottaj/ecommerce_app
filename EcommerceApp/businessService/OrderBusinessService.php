@@ -23,7 +23,7 @@ class OrderBusinessService
 
             $product = $productBusinessService->getProductByID($product_id);
 
-            $orderDetails = new OrderDetails($orderID, $product_id, $qty, ($qty * $product->getPrice()), "here is some description");
+            $orderDetails = new OrderDetails($orderID, $product_id, $qty, ($qty * $product->getPrice()));
             $details = $this->addDetailsLine($orderID, $orderDetails, $conn);
         }
 
@@ -88,6 +88,14 @@ class OrderBusinessService
         $dataService = new OrderDataService();
 
         return $dataService->getOrderDetails($id);
+    }
+
+    // gets the orders between two dates
+    function getOrderBetweenDates($date1, $date2)
+    {
+        $dataService = new OrderDataService();
+
+        return $dataService->getOrderBetweenDates($date1, $date2);
     }
 }
 

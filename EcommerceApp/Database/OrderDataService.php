@@ -1,20 +1,17 @@
 <?php
+
 // joey gallotta
 // cst-236
 
 class OrderDataService
 {
 
-    // function checkOut($order, $cart)
-    // {
-    // }
     function addOrdersLine($order, $conn)
     {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-        $stmt = $conn->prepare("INSERT INTO mfqgkhncw3r34ada.orders (DATE, addresses_ID, users_ID, TOTAL_PRICE) VALUES (?,?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO orders (ID, DATE, USER_ID ADDRESS_ID) VALUES ");
 
-        // create variables to bind to parameters
         $order_id = $order->getId();
         $order_date = $order->getDate();
         $user_id = $order->getUser_Id();
@@ -22,29 +19,27 @@ class OrderDataService
         $order_total = $order->getTotal();
 
         // bind params to the sql statement
-        $stmt->bind_param("siid", $order_date, $user_address_id, $user_id, $order_total);
+        $stmt->bind_param($order_date, $user_address_id, $user_id, $order_total);
 
         if (! $stmt) :
-            echo 'Something went wrong with the binding process. sql error?';
+            echo 'sql error?';
             exit();
     endif;
 
-        echo '</br> </br>';
         echo 'order date: ' . $order_date . ' userid: ' . $user_id . ' user address id: ' . $user_address_id . ' order_total: ' . $order_total;
 
         echo '</br> </br>';
         print_r($stmt);
 
-        // execute query
         echo '</br> </br>';
         $stmt->execute();
 
         // get results
         if ($stmt->affected_rows > 0) {
-            echo 'something inserted for new order';
+            echo 'inserted into db';
             return $conn->insert_id;
         } else {
-            echo 'nothing inserted into the database during createNew in OrderDataService';
+            echo 'nothing inserted into db';
             return false;
         }
     }
@@ -52,14 +47,13 @@ class OrderDataService
     function addDetailsLine($order_id, $orderDetails, $conn)
     {
 
-        // create a new line in the orders details table
         // return the id number of the last item inserted.
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-        $stmt = $conn->prepare("INSERT INTO mfqgkhncw3r34ada.order_details (orders_id, products_id, QUANTITY, CURRENT_PRICE, CURRENT_DESCRIPTION) VALUES (?,?,?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO order_details (ORDER_ID, PRODUCT_ID, QUANTITY, SUBTOTAL, TOTAL) VALUES ");
 
         if (! $stmt) {
-            echo "something wrong in the binding process. SQL statement error?";
+            echo "sql error?";
             return - 1;
         } else {
             $product_id = $orderDetails->getProduct_id();
@@ -67,7 +61,7 @@ class OrderDataService
             $price = $orderDetails->getCurrent_price();
             $description = $orderDetails->getCurrent_description();
 
-            $stmt->bind_param("iiids", $order_id, $product_id, $quantity, $price, $description);
+            $stmt->bind_param($order_id, $product_id, $quantity, $price, $description);
 
             $stmt->execute();
 
