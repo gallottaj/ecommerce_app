@@ -2,7 +2,6 @@
 
 // joey gallotta
 // cst-236
-
 include "../../../header.php";
 $productBusinessService = new ProductBusinessService();
 $userBusinessService = new UserBusinessService();
@@ -23,14 +22,11 @@ $userBusinessService = new UserBusinessService();
 					class="list-group-item d-flex justify-content-between lh-condensed">
 					<div>
 						<small class="text-muted">Toy Robot</small>
-					</div> <span class="text-muted">$10</span>
-<!-- 				</li> -->
-<!-- 				<li -->
-<!-- 					class="list-group-item d-flex justify-content-between lh-condensed"> -->
-<!-- 					<div> -->
-<!-- 						<small class="text-muted">Brief description</small> -->
-<!-- 					</div> <span class="text-muted">$5</span> -->
-<!-- 				</li> -->
+					</div> <span class="text-muted">$10</span> <!-- 				</li> --> <!-- 				<li -->
+					<!-- 					class="list-group-item d-flex justify-content-between lh-condensed"> -->
+					<!-- 					<div> --> <!-- 						<small class="text-muted">Brief description</small> -->
+					<!-- 					</div> <span class="text-muted">$5</span> --> <!-- 				</li> -->
+				
 				<li
 					class="list-group-item d-flex justify-content-between lh-condensed">
 					<div>
@@ -38,8 +34,8 @@ $userBusinessService = new UserBusinessService();
 					</div> <span class="text-muted">$10</span>
 				</li>
 			</ul>
-						<hr class="mb-4">
-			
+			<hr class="mb-4">
+
 			<h4 class="mb-3">Payment</h4>
 
 			<div class="d-block my-3">
@@ -139,13 +135,31 @@ $userBusinessService = new UserBusinessService();
 					<label for="zip">Zip Code</label>
 					<!-- <input type="text" class="form-control" id="zip" placeholder="" required> -->
 					<input type="text" class="form-control" id="zip" placeholder="">
+					<!-- 					<br></br> -->
 				</div>
 			</div>
-			<hr class="mb-4">
 			<div class="custom-control custom-checkbox">
 				<input type="checkbox" class="custom-control-input"
 					id="same-address"> <label class="custom-control-label"
 					for="same-address">Shipping address same as billing address</label>
+				<hr class="mb-4">
+
+				<!-- 			COUPON CODE -->
+
+				<label for="coupon">Have a coupon? Enter it below!</label>
+				<form class="card p-2"
+					action="../../Handlers/cart/couponFormHandler.php" method="POST">
+					<div class="input-group">
+						<input type="text" class="form-control" id="promo-code"
+							name="promo-code" placeholder="Coupon">
+						<div class="input-group-append">
+							<br></br>
+							<button type="submit" class="btn btn-secondary">Redeem</button>
+						</div>
+					</div>
+				</form>
+
+
 				<hr class="mb-4">
 				<button class="btn btn-primary btn-lg btn-block" type="submit">Complete
 					Checkout</button>

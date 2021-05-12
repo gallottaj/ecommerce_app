@@ -94,6 +94,48 @@ class OrderDataService
     // gets the order details with id of $id
     function getOrderDetails($id)
     {}
+
+    // coupon code
+    function applyCouponCode($code)
+    {
+        $database = new Database();
+
+        $conn = $database->getConnection();
+
+        $stmt_getCode = $conn->prepare("SELECT * FROM coupon_codes WHERE coupon_code_name = '$code'");
+
+        $stmt_getCode->execute();
+
+        $getCodeResult = $stmt_getCode->get_result();
+
+        if (! $getCodeResult) {
+            echo "error in SQL statement";
+            exit();
+        }
+
+        if ($getCodeResult->num_rows == 0) {
+            return null;
+        } else {
+            $coupon_code = $getCodeResult->fetch_assoc();
+            $coupon_id = $coupon_code['coupon_code_id'];
+            $user_id = $_SESSION['user_id'];
+            $discount = $coupon_code_name['coupon_code_name'];
+
+            $stmt_checkUnused = $conn->prepare("SELECT * FROM coupon_codes WHERE coupon_code_id = '$coupon_id' AND user_id = '$user_id' ");
+            $stmt_checkUnused->execute();
+
+            $checkUnusedResult = $stmt_checkUnused->get_result();
+
+            if ($checkUnusedResult->num_rows < 1) {
+
+                $stmt_markCodeUsed = $conn->prepare("INSERT INTO coupon_codes_used (coupon_code_id, user_ID) VALUES ('$coupon_id', '$user_id') ");
+                $stmt_markCodeUsed->execute();
+
+                $_SESSION['coupon'] = $discount;
+                // return $discount;
+            }
+        }
+    }
 }
 
 ?>

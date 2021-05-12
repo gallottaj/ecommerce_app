@@ -97,6 +97,14 @@ class OrderBusinessService
 
         return $dataService->getOrderBetweenDates($date1, $date2);
     }
+
+    // applies coupon code
+    function applyCouponCode($code)
+    {
+        $dataService = new OrderDataService();
+
+        return $dataService->applyCouponCode($code);
+    }
 }
 
 ?>

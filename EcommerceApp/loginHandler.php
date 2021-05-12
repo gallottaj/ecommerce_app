@@ -1,6 +1,11 @@
 <?php
+
+// joey gallotta
+// cst-236
+
 require_once 'header.php';
 require_once 'Autoloader.php';
+
 // require_once 'SecurityService.php';
 
 $attemptedLoginUsername = $_POST['Username'];
