@@ -9,14 +9,6 @@ $date2 = $_GET['date2'];
 
 ?>
 
-<form action="../../Admin/orderReport.php" method="GET">
-	from: <input type="date" id="date_1" name="date1" <? if($date1): ?>
-		<?= $date1 ?> <?endif;?> to: <input type="date" id="date_2"
-		name="date2" <? if($date2): ?> <?endif;?> <input
-		type="submit" value="submit">
-</form>
-
-
 <div class="container">
 	<table id="users" class="table table-light table-hover">
 		<thead>
